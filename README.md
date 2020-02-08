@@ -1,5 +1,4 @@
 # Change_PDF_Background_Color
-Make background color of PDF files more eye-friendly.
 使用Java iText7库，将PDF背景色改为豆沙绿（护眼色），白底论文看着太累眼了orz。
 
 ## 使用方法
