@@ -4,3 +4,6 @@
 ## 使用方法
 1. 下载导入iText7 jar包，修改PageBackgrounds.java文件中的相应路径名称。
 2. 直接运行PageBackgrounds.java文件即可。
+
+## 示例图片
+![Example](https://github.com/renli1024/Change_PDF_Background_Color/blob/master/Example.png)
