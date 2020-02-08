@@ -6,5 +6,4 @@
 2. 直接运行PageBackgrounds.java文件即可。
 
 ## 示例图片
-<img src="https://github.com/renli1024/Change_PDF_Background_Color/blob/master/Example.png" width = 50% height = 50%/>
-![Example](https://github.com/renli1024/Change_PDF_Background_Color/blob/master/Example.png)
+< img src="https://github.com/renli1024/Change_PDF_Background_Color/blob/master/Example.png" width = 50% height = 50% div align=center />
