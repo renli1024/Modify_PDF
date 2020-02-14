@@ -16,8 +16,8 @@ import java.io.IOException;
 public class PageBackgrounds {
 
     public static void main(String[] args) throws Exception {
-        String orig_path = "original PDF file path";
-        String colored_path = "generated PDF file path";
+        String orig_path = "";
+        String colored_path = "";
         PageBackgrounds pbClass = new PageBackgrounds();
         pbClass.manipulateDir(orig_path, colored_path);
 
@@ -50,7 +50,7 @@ public class PageBackgrounds {
                     // 不存在相应PDF文件，复制pdf文件，并进行颜色转换
                     try{
                         manipulatePdf(origFileName, newColoredFilePath);
-                        System.out.println("New PDF file: "+ newColoredFilePath);
+                        System.out.println("【New PDF file】: "+ newColoredFilePath);
                     }
                     catch (java.lang.Exception e){
                         e.printStackTrace();
@@ -70,7 +70,7 @@ public class PageBackgrounds {
                 if (!newColoredDir.exists()){
                     // 不存在相应colored目录，新建一个
                     newColoredDir.mkdir();
-                    System.out.println("New Directory: "+ newColoredDirPath);
+                    System.out.println("【New Directory】: "+ newColoredDirPath);
                 }
 
                 // 递归操作子目录
@@ -92,7 +92,7 @@ public class PageBackgrounds {
             e.printStackTrace();
         }
         catch (com.itextpdf.io.IOException e){
-            System.out.println("File: " + filePath + " is not PDF.");
+            System.out.println("Not PDF File: " + filePath);
         }
 
         return isPDF;
