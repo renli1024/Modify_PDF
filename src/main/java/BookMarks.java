@@ -39,7 +39,7 @@ public class BookMarks {
 
         while ((line = br.readLine())!=null){
             String[] line_sp =
-                    line.split("\\s{4}|--");  // 按空格分隔（>=4个空格为分隔符）
+                    line.split("\\s{4}|--");  // 按tab(4空格)或--分隔
 
             if (line_sp.length == 2){
                 // 一级标题
