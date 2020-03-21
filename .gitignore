@@ -1,6 +1,10 @@
-out/
-libs/
-iText7-Core-7.1.9-only-jars/
-change_pdfcolor.iml
 .idea/
-/page_backgrounds*
+out/
+target/
+
+modify_pdf.iml
+input.pdf
+output.pdf
+outline
+project.properties
+

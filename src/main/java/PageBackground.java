@@ -10,15 +10,24 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Properties;
 
 
-public class PageBackgrounds {
+public class PageBackground {
 
-    public static void main(String[] args) {
-        String orig_path = "input";
-        String colored_path = "output";
-        PageBackgrounds pbClass = new PageBackgrounds();
+    public static void main(String[] args)  throws IOException {
+
+        // 读取配置文件中的地址信息
+        Properties properties = new Properties();
+        FileInputStream in = new FileInputStream("project.properties");
+        properties.load(in);
+        String orig_path = properties.get("orig_path").toString();
+        String colored_path = properties.get("colored_path").toString();
+        in.close();
+
+        PageBackground pbClass = new PageBackground();
         pbClass.manipulateDir(orig_path, colored_path);
 
     }
