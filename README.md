@@ -5,9 +5,10 @@
 
 ## 示例图片
 ### 修改背景色功能
-<img src="https://github.com/renli1024/Change_PDF_Background_Color/blob/master/Example.png" width = 50% height = 50%/>
+<img src="https://github.com/renli1024/Modify_PDF/blob/master/example1.png" width = 50% height = 50%/>
 
 ### 添加书签功能
+<img src="https://github.com/renli1024/Modify_PDF/blob/master/example2.png" width = 50% height = 50%/>
 
 ## 使用流程
 1. 使用Maven或其他IDE导入需要的依赖。
