@@ -99,7 +99,7 @@ public class PageBackground {
             e.printStackTrace();
         }
         catch (com.itextpdf.io.IOException e){
-            System.out.println("Not PDF File: " + filePath);
+//            System.out.println("Not PDF File: " + filePath);
         }
 
         return isPDF;
@@ -126,7 +126,8 @@ public class PageBackground {
             Rectangle rect = page.getPageSize();
             canvas
                     .saveState()
-                    .setFillColor(new DeviceRgb(199, 237, 204))
+                    //.setFillColor(new DeviceRgb(199, 237, 204))
+                    .setFillColor(new DeviceRgb(185, 222, 190))
                     .rectangle(rect)
                     .fill()
                     .restoreState();

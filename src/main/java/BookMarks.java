@@ -30,7 +30,13 @@ public class BookMarks {
                           String outline, int offset) throws IOException {
         PdfDocument pdf = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
         pdf.getCatalog().setPageMode(PdfName.UseOutlines);
-        PdfOutline root = pdf.getOutlines(false);
+
+        PdfOutline root = pdf.getOutlines(true);
+
+        // 清除之前存在的目录
+        while (!root.getAllChildren().isEmpty()) {
+            root.getAllChildren().remove(0);
+        }
 
         BufferedReader br = new BufferedReader(new FileReader(outline));
         String line;

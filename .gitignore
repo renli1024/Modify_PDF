@@ -1,10 +1,11 @@
 .idea/
 out/
 target/
+/outline/
 
 modify_pdf.iml
 input.pdf
 output.pdf
-outline
 project.properties
-
+pom.xml
+src/main/java/Test.java
