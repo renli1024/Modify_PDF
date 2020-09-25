@@ -1,7 +1,7 @@
 # Modify_PDF (background color, bookmarks, ...)
 使用Java iText7库，对PDF文件进行修改优化，实现的功能有：
 1. 将PDF背景色改为豆沙绿（护眼色），白底论文看着太累眼了orz。
-2. 为PDF增加书签（目录），便于在pdf中进行跳转查阅。
+2. 为PDF增加书签（目录），便于对一些电子书中进行跳转查阅。
 
 ## 示例图片
 ### 修改背景色功能
@@ -11,7 +11,7 @@
 <img src="https://github.com/renli1024/Modify_PDF/blob/master/example2.png" width = 30% height = 30%/>
 
 ## 使用流程
-1. 使用Maven或其他IDE导入需要的依赖。
+1. 使用Maven导入jar包依赖 (也可手动下载, 配置信息在pom.xml文件中)。
 2. 添加project.properties配置文件
 3. 直接运行相关文件即可。
     - PageBackgrounds.java：修改pdf背景色；
