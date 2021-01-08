@@ -14,7 +14,7 @@ public class PdfMerge {
         FileInputStream in = new FileInputStream("project.properties");
         properties.load(in);
         String file_dir = properties.get("file_dir").toString();
-        String new_name = properties.get("new_name").toString();
+        String new_name = properties.get("new_name").toString() + ".pdf";
         String[] file_names = properties.get("file_names").toString().split(", ");
         in.close();
 
