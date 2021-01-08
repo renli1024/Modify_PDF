@@ -26,7 +26,7 @@ public class PageBackground {
         String orig_path = properties.get("orig_path").toString();
         String colored_path = properties.get("colored_path").toString();
         in.close();
-
+        // 具体操作文件
         PageBackground pbClass = new PageBackground();
         pbClass.manipulateDir(orig_path, colored_path);
 

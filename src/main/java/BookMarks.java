@@ -28,6 +28,7 @@ public class BookMarks {
 
     public void createPdf(String src, String dest,
                           String outline, int offset) throws IOException {
+        // 传入PdfWriter: stamping mode, 会先copy一个文件, 再在该文件上修改;
         PdfDocument pdf = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
         pdf.getCatalog().setPageMode(PdfName.UseOutlines);
 
