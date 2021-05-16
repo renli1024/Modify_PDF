@@ -2,10 +2,9 @@
 out/
 target/
 /outline/
+/pdfs/
 
 modify_pdf.iml
-input.pdf
-output.pdf
 project.properties
 pom.xml
 src/main/java/Test.java

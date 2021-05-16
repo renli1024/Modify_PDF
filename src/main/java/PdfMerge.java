@@ -32,6 +32,7 @@ public class PdfMerge {
             merger.merge(temp_doc, 1, temp_doc.getNumberOfPages());
         }
         dest_doc.close();
+        System.out.println("Merging Completes: " + properties.get("new_name").toString() + ".pdf");
 
     }
 }
