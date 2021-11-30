@@ -126,8 +126,8 @@ public class PageBackground {
             Rectangle rect = page.getPageSize();
             canvas
                     .saveState()
-                    //.setFillColor(new DeviceRgb(199, 237, 204))
-                    .setFillColor(new DeviceRgb(185, 222, 190))
+                    .setFillColor(new DeviceRgb(171, 207, 177))
+//                    .setFillColor(new DeviceRgb(178, 215, 183))
                     .rectangle(rect)
                     .fill()
                     .restoreState();
