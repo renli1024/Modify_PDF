@@ -1,9 +1,9 @@
 # Modify_PDF (background color, bookmarks, ...)
-使用Java iText7库，对pdf文件进行修改优化，实现的功能有：
-1. 将pdf背景色改为护眼色 (豆沙绿), 看白底论文眼睛容易疲劳.
+使用Java iText7库，对pdf文件进行修改优化，实现的功能有: 
+1. 将pdf背景色改为护眼色 (豆沙绿), 白底论文看着太累眼了...
 2. 为pdf增加书签 / 目录, 便于在pdf中跳转查阅.
 3. 合并多个pdf文件，主要为了合并论文的正文和附录 (如NeurIPS论文的正文和附录是分开的, 查阅起来不方便).
-4. 分割pdf文件 (交论文有时需要正文和附录分开提交).
+4. 切分pdf文件 (交论文有时需要正文和附录分开提交).
 
 ## 示例图片
 ### 修改背景色功能
@@ -18,8 +18,8 @@
 3. 运行相关代码:
     - `PageBackgrounds.java`: 修改pdf背景色;
     - `BookMarks.java`: 为pdf添加标签;
-    - `PdfMerge.java`: 合并多个pdf文件;
-    - `PdfSplit.java`: 将单个文件分割为多个pdf文件;
+    - `PdfMerge.java`: 将多个pdf文件合并为一个;
+    - `PdfSplit.java`: 将一个pdf文件切分为多个;
 
 ## 修改背景色功能
 读入指定目录中包含的pdf文件, 将其背景色转为为护眼色 (护眼色), 
@@ -76,8 +76,8 @@ new_name: pdf_merged
 # 注: 上述名字不用加.pdf后缀, 代码会自动添加
 ```
 
-## 分割文件
-将一个pdf文件分割为多个.
+## 切分文件
+将一个pdf文件切分为多个.
 
 `project.properties`中的相关设置: 
 ```

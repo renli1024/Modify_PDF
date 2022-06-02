@@ -93,13 +93,9 @@ public class PageBackground {
             PdfDocument doc = new PdfDocument(new PdfReader(filePath));
             isPDF = true;
             doc.close();
-
         }
         catch (IOException e){
             e.printStackTrace();
-        }
-        catch (com.itextpdf.io.IOException e){
-//            System.out.println("Not PDF File: " + filePath);
         }
 
         return isPDF;
