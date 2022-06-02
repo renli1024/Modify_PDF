@@ -16,8 +16,8 @@ public class BookMarks {
         FileInputStream in = new FileInputStream("project.properties");
         properties.load(in);
         String src = properties.get("src").toString();
-        String dest = properties.get("dest").toString();
-        String outline = properties.get("outline").toString();
+        String dest = properties.get("dst").toString();
+        String outline = properties.get("bookmarks").toString();
         // 设置书籍目录和pdf文档页码间的偏差
         int offset = Integer.parseInt(properties.get("offset").toString());
 

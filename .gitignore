@@ -5,6 +5,4 @@ target/
 /pdfs/
 
 modify_pdf.iml
-project.properties
-pom.xml
 src/main/java/Test.java
