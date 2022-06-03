@@ -6,7 +6,6 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.utils.PageRange;
 import com.itextpdf.kernel.utils.PdfSplitter;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -14,9 +13,6 @@ import java.util.List;
 import java.util.Properties;
 
 public class PdfSplit {
-//    public static final String DEST = "./test/emnlp2021_%s.pdf";
-//
-//    public static final String RESOURCE = "./test/emnlp2021.pdf";
 
     public static void main(String[] args) throws IOException {
         // 读取配置文件
