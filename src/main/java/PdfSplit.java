@@ -18,8 +18,9 @@ public class PdfSplit {
         Properties properties = new Properties();
         FileInputStream in = new FileInputStream("project.properties");
         properties.load(in);
-        String dst_files = properties.get("dst_files").toString();
-        String src_file = properties.get("src_file").toString();
+        String dir = properties.get("file_dir").toString();
+        String input = properties.get("split_input").toString();
+        String output = properties.get("split_output").toString();
 
         String[] temp_list = properties.get("split_pages").toString().split(", ");
         List<Integer> split_pages = new ArrayList<Integer>();
@@ -34,21 +35,22 @@ public class PdfSplit {
             last_p = p;
         }
 
-        new PdfSplit().manipulatePdf(src_file, dst_files, split_pages);
+        new PdfSplit().manipulatePdf(dir, input, output, split_pages);
         in.close();
     }
 
-    protected void manipulatePdf(final String src, final String dst,
+    protected void manipulatePdf(final String dir, final String src, final String dst,
                                  final List<Integer> split_pages) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(dir+src));
+        System.out.printf("Split input: %s\n", src);
         List<PdfDocument> splitDocuments = new PdfSplitter(pdfDoc) {
             int part_index = 1;
 
             @Override
             protected PdfWriter getNextPdfWriter(PageRange documentPageRange) {
                 try {
-                    System.out.printf("Split file %d: %s\n", part_index, String.format(dst, part_index));
-                    return new PdfWriter(String.format(dst, part_index++));
+                    System.out.printf("Split output %d: %s\n", part_index, String.format(dst, part_index));
+                    return new PdfWriter(String.format(dir+dst, part_index++));
                 } catch (FileNotFoundException e) {
                     throw new RuntimeException(e);
                 }

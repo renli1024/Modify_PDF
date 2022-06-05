@@ -1,8 +1,6 @@
-.idea/
-out/
-target/
-/outline/
+/.idea/
+/out/
+/target/
 /pdfs/
-
-modify_pdf.iml
-src/main/java/Test.java
+/modify_pdf.iml
+/src/main/java/Test.java

@@ -18,7 +18,7 @@
 2. 填写`project.properties`配置文件中的参数;
 3. 运行相关代码:
     - `PageBackgrounds.java`: 修改pdf背景色;
-    - `BookMarks.java`: 为pdf添加标签;
+    - `BookMark.java`: 为pdf添加标签;
     - `PdfMerge.java`: 将多个pdf文件合并为一个;
     - `PdfSplit.java`: 将一个pdf文件切分为多个;
 
@@ -52,11 +52,11 @@ colored_path = <your_address>/cPapers
 在`project.properties`中指定相关参数: 
 ```bash
 # 原始pdf文件地址（单个pdf文件）
-src = <your_address>/input.pdf
+bk_input = input.pdf
 # 添加书签后的pdf输出地址
-dst = <your_address>/output.pdf
+bk_output = output2.pdf
 # 书签信息文件地址
-bookmarks = <your_address>/bookmarks.txt
+bookmark = bookmark.txt
 # 目录页码和pdf文档页码间的偏差
 # 目录页码: 内容在书籍中的页码 (也是从原书目录中可复制到的页码), 文档页码: 内容在pdf中的页码
 # 通常两者会存在偏差, 即文档页码=目录页码+偏差
@@ -68,13 +68,10 @@ offset = 4
 
 在`project.properties`中指定相关参数: 
 ```bash
-# 文件所在目录
-file_dir: <your_address>/
 # 需要合并的文件名, 格式: 按先后顺序指定, 用逗号+空格分隔
-file_names: pdf_1, pdf_2
-# 合并后的新文件名
-new_name: pdf_merged
-# 注: 上述名字不用加.pdf后缀, 代码会自动添加
+merge_input: merge_1.pdf, merge_2.pdf
+# 合并后的输出文件
+merge_output: merged.pdf
 ```
 
 ## 切分文件
@@ -83,10 +80,10 @@ new_name: pdf_merged
 在`project.properties`中指定相关参数: 
 ```bash
 # 源文件地址
-src_file: <your_address>/split.pdf
+split_input: split.pdf
 # 目标文件地址, 后缀会依次加 _1 / _2 ...
-dst_files: <your_address>/split_%s.pdf
-# 在哪一页进行划分, 格式: 按先后顺序指定, 用逗号+空格分隔
-# 划分效果: 按结束页划分, 如指定"2, 4", 文档会被划分为: 1~2, 3~4, 5~end三部分
+split_output: split_%s.pdf
+# 在哪一页进行划分, 格式: 按先后顺序指用逗号+空格分隔
+# 划分效果: 按结束页划分, 如指定"2, 4", 文档会被分为: 1~2, 3~4, 5~end三部分
 split_pages: 2, 4
 ```

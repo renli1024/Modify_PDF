@@ -13,27 +13,32 @@ public class PdfMerge {
         Properties properties = new Properties();
         FileInputStream in = new FileInputStream("project.properties");
         properties.load(in);
-        String file_dir = properties.get("file_dir").toString();
-        String new_name = properties.get("new_name").toString() + ".pdf";
-        String[] file_names = properties.get("file_names").toString().split(", ");
+        String dir = properties.get("file_dir").toString();
+        String[] input_pdfs = properties.get("merge_input").toString().split(", ");
+        String output_pdf = properties.get("merge_output").toString();
         in.close();
 
-        for (int i=0; i< file_names.length; i++){
-            file_names[i] = file_dir + file_names[i] + ".pdf";
+        for (int i=0; i< input_pdfs.length; i++){
+            input_pdfs[i] = dir + input_pdfs[i];
         }
 
-        PdfDocument dest_doc = new PdfDocument(new PdfWriter(file_dir + new_name));
+        PdfDocument dest_doc = new PdfDocument(new PdfWriter(dir + output_pdf));
         PdfMerger merger = new PdfMerger(dest_doc);
         merger.setCloseSourceDocuments(true);  // merge 后自动关闭
 
         // 依次merge
-        for (String file_name : file_names) {
+        for (String file_name : input_pdfs) {
             PdfDocument temp_doc = new PdfDocument(new PdfReader(file_name));
             merger.merge(temp_doc, 1, temp_doc.getNumberOfPages());
         }
         dest_doc.close();
 
-        System.out.printf("Merging Completes: %s\n", file_dir + new_name);
+        String sep = File.separator;
+        for (int i=0; i< input_pdfs.length; i++){
+            String input = input_pdfs[i].split(sep)[input_pdfs[i].split(sep).length-1];
+            System.out.printf("Merging pdf %d: %s\n", i+1, input);
+        }
+        System.out.printf("Merging Output: %s\n", output_pdf);
     }
 }
 

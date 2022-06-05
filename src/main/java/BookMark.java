@@ -8,22 +8,23 @@ import java.io.*;
 import java.util.Properties;
 
 
-public class BookMarks {
+public class BookMark {
 
     public static void main(String args[]) throws IOException {
         // 读取配置文件中的地址信息
         Properties properties = new Properties();
         FileInputStream in = new FileInputStream("project.properties");
         properties.load(in);
-        String src = properties.get("src").toString();
-        String dst = properties.get("dst").toString();
-        String bookmarks = properties.get("bookmarks").toString();
+        String dir = properties.get("file_dir").toString();
+        String src = dir + properties.get("bk_input").toString();
+        String dst = dir + properties.get("bk_output").toString();
+        String bookmarks = dir + properties.get("bookmark").toString();
         // 设置书籍目录和pdf文档页码间的偏差
         int offset = Integer.parseInt(properties.get("offset").toString());
 
         in.close();
 
-        new BookMarks().createPdf(src, dst, bookmarks, offset);
+        new BookMark().createPdf(src, dst, bookmarks, offset);
     }
 
     public void createPdf(String src, String dst,
@@ -80,9 +81,10 @@ public class BookMarks {
             }
         }
         pdf.close();
-        System.out.printf("Bookmark file: %s\n", bookmarks);
-        System.out.printf("Input pdf: %s\n", src);
-        System.out.printf("Output pdf with bookmarks: %s\n", dst);
+        String sep = File.separator;
+        System.out.printf("Bookmark file: %s\n", bookmarks.split(sep)[bookmarks.split(sep).length-1]);
+        System.out.printf("Input pdf: %s\n", src.split(sep)[src.split(sep).length-1]);
+        System.out.printf("Output pdf with bookmarks: %s\n", dst.split(sep)[dst.split(sep).length-1]);
     }
 
 }
