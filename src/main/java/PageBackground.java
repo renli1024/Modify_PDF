@@ -29,7 +29,7 @@ public class PageBackground {
         // 具体操作文件
         PageBackground pbClass = new PageBackground();
         pbClass.manipulateDir(orig_path, colored_path);
-
+        System.out.println("---PDF颜色转换完成---");
     }
 
     // 要保证这两个目录都是存在的

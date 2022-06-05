@@ -80,9 +80,9 @@ public class BookMarks {
             }
         }
         pdf.close();
-        System.out.println(String.format("Bookmark file: %s", bookmarks));
-        System.out.println(String.format("Input pdf: %s", src));
-        System.out.println(String.format("Output pdf with bookmarks: %s", dst));
+        System.out.printf("Bookmark file: %s\n", bookmarks);
+        System.out.printf("Input pdf: %s\n", src);
+        System.out.printf("Output pdf with bookmarks: %s\n", dst);
     }
 
 }

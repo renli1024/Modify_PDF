@@ -47,8 +47,7 @@ public class PdfSplit {
             @Override
             protected PdfWriter getNextPdfWriter(PageRange documentPageRange) {
                 try {
-                    String s = String.format("Split file %d: %s", part_index, String.format(dst, part_index));
-                    System.out.println(s);
+                    System.out.printf("Split file %d: %s\n", part_index, String.format(dst, part_index));
                     return new PdfWriter(String.format(dst, part_index++));
                 } catch (FileNotFoundException e) {
                     throw new RuntimeException(e);
