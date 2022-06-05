@@ -97,6 +97,10 @@ public class PageBackground {
         catch (IOException e){
             e.printStackTrace();
         }
+        // 捕获非pdf文件 (如`.DS_Store`文件) 异常
+        catch (com.itextpdf.io.exceptions.IOException e){
+//            System.out.println("Not PDF File: " + filePath);
+        }
 
         return isPDF;
     }

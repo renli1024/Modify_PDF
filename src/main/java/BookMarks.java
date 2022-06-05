@@ -16,20 +16,20 @@ public class BookMarks {
         FileInputStream in = new FileInputStream("project.properties");
         properties.load(in);
         String src = properties.get("src").toString();
-        String dest = properties.get("dst").toString();
-        String outline = properties.get("bookmarks").toString();
+        String dst = properties.get("dst").toString();
+        String bookmarks = properties.get("bookmarks").toString();
         // 设置书籍目录和pdf文档页码间的偏差
         int offset = Integer.parseInt(properties.get("offset").toString());
 
         in.close();
 
-        new BookMarks().createPdf(src, dest, outline, offset);
+        new BookMarks().createPdf(src, dst, bookmarks, offset);
     }
 
-    public void createPdf(String src, String dest,
-                          String outline, int offset) throws IOException {
+    public void createPdf(String src, String dst,
+                          String bookmarks, int offset) throws IOException {
         // 传入PdfWriter: stamping mode, 会先copy一个文件, 再在该文件上修改;
-        PdfDocument pdf = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
+        PdfDocument pdf = new PdfDocument(new PdfReader(src), new PdfWriter(dst));
         pdf.getCatalog().setPageMode(PdfName.UseOutlines);
 
         PdfOutline root = pdf.getOutlines(true);
@@ -39,7 +39,7 @@ public class BookMarks {
             root.getAllChildren().remove(0);
         }
 
-        BufferedReader br = new BufferedReader(new FileReader(outline));
+        BufferedReader br = new BufferedReader(new FileReader(bookmarks));
         String line;
         PdfOutline lastFirstClassTitle = null;
         PdfOutline lastSecondClassTitle = null;
@@ -80,7 +80,9 @@ public class BookMarks {
             }
         }
         pdf.close();
-
+        System.out.println(String.format("Bookmark file: %s", bookmarks));
+        System.out.println(String.format("Input pdf: %s", src));
+        System.out.println(String.format("Output pdf with bookmarks: %s", dst));
     }
 
 }

@@ -1,5 +1,3 @@
-package com.itextpdf.samples.sandbox.merge;
-
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -10,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Properties;
 
 public class PdfSplit {
@@ -21,26 +20,41 @@ public class PdfSplit {
         properties.load(in);
         String dst_files = properties.get("dst_files").toString();
         String src_file = properties.get("src_file").toString();
-        Integer split_page = Integer.valueOf(properties.get("split_page").toString());
 
-        new com.itextpdf.samples.sandbox.merge.PdfSplit().manipulatePdf(src_file, dst_files, split_page);
+        String[] temp_list = properties.get("split_pages").toString().split(", ");
+        List<Integer> split_pages = new ArrayList<Integer>();
+        int last_p = 1;
+        for (String s : temp_list) {
+            int p = Integer.parseInt(s);
+            // 判断前后页数满足大小约束
+            assert last_p < p ;
+            // 我设置的划分效果指定结束页, 但iText7 splitByPageNumbers()是指定开始页
+            // 如输入2, 4, 我希望的效果: 1~2, 3~4, 因此传入函数的值需要为: 3, 5 (itex会自动在开头补1)
+            split_pages.add(p+1);
+            last_p = p;
+        }
+
+        new PdfSplit().manipulatePdf(src_file, dst_files, split_pages);
+        in.close();
     }
 
-    protected void manipulatePdf(final String src, final String dst, final Integer split_page) throws IOException {
+    protected void manipulatePdf(final String src, final String dst,
+                                 final List<Integer> split_pages) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
-
         List<PdfDocument> splitDocuments = new PdfSplitter(pdfDoc) {
-            int partNumber = 1;
+            int part_index = 1;
 
             @Override
             protected PdfWriter getNextPdfWriter(PageRange documentPageRange) {
                 try {
-                    return new PdfWriter(String.format(dst, partNumber++));
+                    String s = String.format("Split file %d: %s", part_index, String.format(dst, part_index));
+                    System.out.println(s);
+                    return new PdfWriter(String.format(dst, part_index++));
                 } catch (FileNotFoundException e) {
                     throw new RuntimeException(e);
                 }
             }
-        }.splitByPageCount(split_page);
+          }.splitByPageNumbers(split_pages);
 
         for (PdfDocument doc : splitDocuments) {
             doc.close();
