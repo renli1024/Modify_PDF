@@ -38,7 +38,7 @@ public class PdfMerge {
             String input = input_pdfs[i].split(sep)[input_pdfs[i].split(sep).length-1];
             System.out.printf("Merging pdf %d: %s\n", i+1, input);
         }
-        System.out.printf("Merging Output: %s\n", output_pdf);
+        System.out.printf("Merging output: %s\n", output_pdf);
     }
 }
 

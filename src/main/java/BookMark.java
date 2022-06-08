@@ -84,7 +84,7 @@ public class BookMark {
         String sep = File.separator;
         System.out.printf("Bookmark file: %s\n", bookmarks.split(sep)[bookmarks.split(sep).length-1]);
         System.out.printf("Input pdf: %s\n", src.split(sep)[src.split(sep).length-1]);
-        System.out.printf("Output pdf with bookmarks: %s\n", dst.split(sep)[dst.split(sep).length-1]);
+        System.out.printf("Output pdf: %s\n", dst.split(sep)[dst.split(sep).length-1]);
     }
 
 }

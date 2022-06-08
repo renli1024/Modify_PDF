@@ -14,7 +14,7 @@
 
 ## 使用流程
 1. 使用Maven导入jar包依赖 (也可手动下载, 配置信息在`pom.xml`文件中);
-    - 要求: [iText7](https://search.maven.org/search?q=g:com.itextpdf%20AND%20a:itext7-core&core=gav) >= 7.2.2
+    - 版本要求: [iText7](https://search.maven.org/search?q=g:com.itextpdf%20AND%20a:itext7-core&core=gav) >= 7.2.2
 2. 填写`project.properties`配置文件中的参数;
 3. 运行相关代码:
     - `PageBackgrounds.java`: 修改pdf背景色;
