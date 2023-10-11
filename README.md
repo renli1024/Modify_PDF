@@ -1,7 +1,7 @@
 # Modify_PDF (background color, bookmarks, ...)
 使用Java [iText7](https://itextpdf.com/en/products/itext-7/itext-7-core) 库，对pdf文件进行修改优化，实现的功能有: 
 1. 将pdf背景色改为护眼色 (豆沙绿), 白底论文看着太累眼了...
-2. 为pdf增加书签 / 目录, 便于在pdf中跳转查阅.
+2. 为pdf增加目录/书签, 便于在pdf中跳转查阅.
 3. 合并多个pdf文件，主要为了合并论文的正文和附录 (如NeurIPS论文的正文和附录是分开的, 查阅起来不方便).
 4. 切分pdf文件 (交论文有时需要正文和附录分开提交).
 
@@ -9,7 +9,7 @@
 ### 修改背景色功能
 <img src="https://github.com/renli1024/Modify_PDF/blob/master/example1.png" width = 50% height = 50%/>
 
-### 添加书签功能
+### 添加目录功能
 <img src="https://github.com/renli1024/Modify_PDF/blob/master/example2.png" width = 30% height = 30%/>
 
 ## 使用流程
