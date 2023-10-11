@@ -18,7 +18,7 @@
 2. 填写`project.properties`配置文件中的参数;
 3. 运行相关代码:
     - `PageBackgrounds.java`: 修改pdf背景色;
-    - `BookMark.java`: 为pdf添加标签;
+    - `AddOutline.java`: 为pdf添加标签;
     - `PdfMerge.java`: 将多个pdf文件合并为一个;
     - `PdfSplit.java`: 将一个pdf文件切分为多个;
 
@@ -34,11 +34,12 @@ orig_path = <your_address>/Papers
 colored_path = <your_address>/cPapers
 ```
 
-## 添加书签
-为pdf添加目录书签, 方便在pdf内进行跳转查阅.
+## 添加目录
+为pdf添加目录, 方便在pdf内进行跳转查阅.
 
-所添加的书签信息需要写到`book_marks.txt`文件中, 格式如下: 
+所添加的目录信息需要写到`outline.txt`文件中, 格式如下: 
 ```
+offset--指定偏差数
 一级目录a--目录页码
     二级目录a--目录页码
     二级目录b--目录页码
@@ -49,18 +50,20 @@ colored_path = <your_address>/cPapers
 其中二级目录前有1个tab (4个空格), 三级目录前有2个tab (8个空格), 
 主要用来区分一/二/三级目录, 视觉上也容易辨认; 其次目录标题和目录页码间用双短杠 -- 分隔. 
 
+- 关于offset偏差: 
+  - 指目录页码和pdf文档页码间的偏差. 
+  - 目录页码: 内容目录中的页, 文档页码: 内容在pdf中的实际页码; 
+  - 通常两者会存在偏差, 即文档页码=目录页码+偏差;
+  - 最好将offset信息直接写到目录文件中, 而非`.properties`文件, 这样更利于信息保存;
+
 在`project.properties`中指定相关参数: 
 ```bash
 # 原始pdf文件地址（单个pdf文件）
 bk_input = input.pdf
 # 添加书签后的pdf输出地址
 bk_output = output2.pdf
-# 书签信息文件地址
-bookmark = bookmark.txt
-# 目录页码和pdf文档页码间的偏差
-# 目录页码: 内容在书籍中的页码 (也是从原书目录中可复制到的页码), 文档页码: 内容在pdf中的页码
-# 通常两者会存在偏差, 即文档页码=目录页码+偏差
-offset = 4
+# 目录信息文件地址
+outline = outline.txt
 ```
 
 ## 合并文件
